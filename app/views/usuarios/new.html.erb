@@ -1,0 +1,82 @@
+<h1>New usuario</h1>
+
+<% form_for(@usuario) do |f| %>
+<%= f.error_messages %>
+
+<p>
+	<%= f.label :nome %><br />
+	<%= f.text_field :nome %>
+</p>
+<p>
+	<%= f.label :telefone %><br />
+	<%= f.text_field :telefone %>
+</p>
+<p>
+	<%= f.label :email %><br />
+	<%= f.text_field :email %>
+</p>
+<p>
+	<%= f.label :idade %><br />
+	<%= f.text_field :idade %>
+</p>
+<p>
+	<%= f.submit 'Create' %>
+</p>
+<% end %>
+
+<%= link_to 'Back', usuarios_path %>
+
+<script>
+$(document).ready(function(){
+	$("#new_usuario").validate({
+		//OPCOES DO VALIDATE EM: http://docs.jquery.com/Plugins/Validation/validate#options
+		
+		// SO DEIXA O FORM SER SUBMITADO CASO AS VALIDACOES ESTEJAM CORRETAS
+		debug: true,
+		
+		// REGRAS A SEREM VALIDADAS
+		rules: {
+			"usuario[nome]": {required: true, minlength: 6},
+			"usuario[idade]": {required: true, minlength: 10},
+			"usuario[email]": {required: true, email: true}
+		}
+		
+		// MENSAGENS DE ERRO PERSONALIZADA
+		//messages: {
+		//     usuario[nome]: "Please specify your name",
+		//     usuario[email]: {
+		//       required: "We need your email address to contact you",
+		//       email: "Your email address must be in the format of name@domain.com"
+		//     }
+		// }
+		
+		// ADICIONAR UMA CLASS A UM ELEMENTO VALIDO
+		//success: function(label) {
+		//     label.addClass("valid").text("Ok!")
+		//},
+		
+		
+		// CLASS PARA USAR NAS LABELS DE ERRO
+		// errorClass: "invalid"
+		
+		// CLASS PARA USAR NAS LABELS DE CAMPOS VALIDOS
+		// validClass: "success"
+		
+		
+		// METODO PARA CHAMAR ANTES DE SUBMITAR
+		// Por exemplo: passar algumas caixas para caixa alta antes de submitar
+		//submitHandler: function(form) {
+		     // do other stuff for a valid form
+	  	//	form.submit();
+		//}
+		
+		// METODO PARA CHAMAR DEPOIS DE SUBMITAR UM FORM INVALIDO
+		//invalidHandler: function(form, validator) {}
+		
+		
+		// VALIDACAO EM UM MESSAGEBOX COM UM <li> EM VOLTA//
+		//, errorLabelContainer: "#messageBox",
+		//wrapper: "li",
+	});
+});
+</script>
